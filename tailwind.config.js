@@ -14,7 +14,7 @@ export default {
         },
         secondary:{
           DEFAULT: "#1C3A5D",
-          light: "#2A4B75 ",
+          light: "#2A4B75",
           dark: "#132B41 "
         },
         'dark-gray':{
@@ -42,9 +42,52 @@ export default {
           light: "#D1D8DB",
           dark: "#95A5A6"
         },
+      },
+      animation: {
+        scroll: "scroll 80s linear infinite",
+        slideUp: 'slideUp 0.8s ease-out',
+        fadeIn: 'fadeIn 1s ease-out',
+      },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-200px * 10))" }, // Ajusta según el tamaño de las tarjetas
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(50px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.scrollbar-thin': {
+          scrollbarWidth: 'thin',
+          scrollbarColor: '#132B41 #1A242F', // Pulgar y pista
+        },
+        '.scrollbar-webkit': {
+          '&::-webkit-scrollbar': {
+            width: '8px',
+          },
+          '&::-webkit-scrollbar-track': {
+            background: 'transparent', // Pista
+          },
+          '&::-webkit-scrollbar-thumb': {
+            backgroundColor: '#2A4B75', // Pulgar
+            borderRadius: '10px',
+            border: '1px solid #1A2C3D', // Borde del pulgar
+          },
+        },
+      };
+    
+      addUtilities(newUtilities, ['responsive', 'hover']);
+    }
+  ],
 }
 
