@@ -4,7 +4,7 @@ import RecomendationCarousel from "../../components/recomendationsCarousel/Recom
 import { FaSearch } from "react-icons/fa";
 import Footer from "../../components/footer/Footer";
 import { useEffect, useState } from "react";
-import { getFirstJobs, getRecomendations, searchJobsTitle } from "../../services/jobs.service";
+import { getFirstJobs, getRecomendations, searchJobsTitle, getJobById } from "../../services/jobs.service";
 
 /**
  * MainPage component is responsible for displaying the main content of the page, including the welcome message, job recommendations carousel, and search functionality.
@@ -36,13 +36,20 @@ const MainPage = () => {
     const [searchResults, setSearchResults] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [isSearching, setIsSearching] = useState(false);
-    const [idSearch, setIdSearch] = useState(false)
+    const [idSearch, setIdSearch] = useState(false);
+    const [selectedJob, setSelectedJob] = useState(null);
 
     useEffect(() => {
         getFirstJobs().then((res) => {
             setFirstJobs(res.data);
         });
     }, []);
+
+    const getJob = (id) => {
+        getJobById(id).then((res) => {
+            setSelectedJob(res.data[0]);
+        });
+    }
 
     const handleSearch = async (e) => {
         setSearchQuery(e.target.value);
@@ -61,11 +68,13 @@ const MainPage = () => {
                 // Búsqueda por ID
                 setIdSearch(true)
                 const response = await getRecomendations(e.target.value);
+                getJob(e.target.value);
                 setSearchResults(response.data); 
             } else {
                 // Búsqueda por título
                 const response = await searchJobsTitle(e.target.value);
                 setSearchResults(response.data);
+                setSelectedJob(null);
             }
         } catch (error) {
             console.error("Error en la búsqueda:", error);
@@ -96,6 +105,13 @@ const MainPage = () => {
                         <FaSearch className="absolute text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                     </div>
                 </div>
+                {searchResults.length > 0 && selectedJob &&(
+                    <div className="w-full flex flex-col items-center p-2">
+                        <h2 className="text-aqua-light font-medium text-2xl py-2 lg:hidden">Job selected</h2>
+                        <ShowRecommendations data={selectedJob} />
+                        <h2 className="text-aqua-light font-medium text-4xl pt-10 pb-4">Jobs recommended:</h2>
+                    </div>
+                )}
                 {searchResults.length > 0 && idSearch &&(
                     <article className="text-white text-sm flex flex-col md:flex-row gap-4 mx-auto mt-3">
                         <p><span className="text-aqua-light font-medium">CBS: </span>Content Based Similarity</p>
