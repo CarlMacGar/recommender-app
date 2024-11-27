@@ -86,7 +86,7 @@ const MainPage = () => {
 
     return (
         <>
-            <main className="flex flex-col min-h-screen h-full bg-gradient-to-t from-primary-dark to-secondary-light">
+            <main className="flex flex-col h-full min-h-screen bg-gradient-to-t from-primary-dark to-secondary-light">
                 <div className="animate-slideUp" style={{ animationDelay: "0.2s" }}>
                     <WelcomeMessage />
                 </div>
@@ -106,17 +106,17 @@ const MainPage = () => {
                     </div>
                 </div>
                 {searchResults.length > 0 && selectedJob &&(
-                    <div className="w-full flex flex-col items-center p-2">
-                        <h2 className="text-aqua-light font-medium text-2xl py-2 lg:hidden">Job selected</h2>
+                    <div className="flex flex-col items-center w-full p-2">
+                        <h2 className="py-2 text-2xl font-medium text-aqua-light lg:hidden">Selected job</h2>
                         <ShowRecommendations data={selectedJob} />
-                        <h2 className="text-aqua-light font-medium text-4xl pt-10 pb-4">Jobs recommended:</h2>
+                        <h2 className="pt-10 pb-4 text-4xl font-medium text-aqua-light">Recommended jobs:</h2>
                     </div>
                 )}
                 {searchResults.length > 0 && idSearch &&(
-                    <article className="text-white text-sm flex flex-col md:flex-row gap-4 mx-auto mt-3">
-                        <p><span className="text-aqua-light font-medium">CBS: </span>Content Based Similarity</p>
-                        <p><span className="text-aqua-light font-medium">CXBS: </span>Context Based Similarity</p>
-                        <p><span className="text-aqua-light font-medium">AIBS: </span>Artificial Intelligence Based Similarity</p>
+                    <article className="flex flex-col gap-4 mx-auto mt-3 text-sm text-white md:flex-row">
+                        <p><span className="font-medium text-aqua-light">CBS: </span>Content Based Similarity</p>
+                        <p><span className="font-medium text-aqua-light">CXBS: </span>Context Based Similarity</p>
+                        <p><span className="font-medium text-aqua-light">AIBS: </span>Artificial Intelligence Based Similarity</p>
                     </article>
                 )}
                 {/* Mostrar los resultados de la búsqueda */}
@@ -125,7 +125,7 @@ const MainPage = () => {
                     {searchResults.length === 0 && isSearching && <p className="text-white">No results found.</p>}
                     {searchResults.length > 0 &&
                         searchResults.map((job, index) => (
-                            <div key={index} className="animate-slideUp mt-3" style={{ animationDelay: `${index * 0.3}s` }}>
+                            <div key={index} className="mt-3 animate-slideUp" style={{ animationDelay: `${index * 0.3}s` }}>
                                 <ShowRecommendations data={job} />
                             </div>
                         ))}
