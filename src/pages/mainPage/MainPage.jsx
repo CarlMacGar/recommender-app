@@ -109,7 +109,7 @@ const MainPage = () => {
                     <div className="flex flex-col items-center w-full p-2">
                         <h2 className="py-2 text-2xl font-medium text-aqua-light lg:hidden">Selected job</h2>
                         <ShowRecommendations data={selectedJob} />
-                        <h2 className="pt-10 pb-4 text-4xl font-medium text-aqua-light">Recommended jobs:</h2>
+                        <h2 className="pt-5 text-4xl font-medium text-center text-aqua-light">Recommended jobs:</h2>
                     </div>
                 )}
                 {searchResults.length > 0 && idSearch &&(
