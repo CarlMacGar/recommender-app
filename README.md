@@ -4,7 +4,7 @@
 This project implements a Hybrid Recommendation System using various recommendation techniques, such as content-based, context-based, and AI-based filtering. The app displays job recommendations to users based on a combination of these techniques.
 
 ## Preview
-![App Preview](src\assets\preview.png)
+![App Preview](src/assets/preview.png)
 
 ## Project files
 
