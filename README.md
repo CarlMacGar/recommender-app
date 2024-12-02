@@ -3,6 +3,9 @@
 ## Overview
 This project implements a Hybrid Recommendation System using various recommendation techniques, such as content-based, context-based, and AI-based filtering. The app displays job recommendations to users based on a combination of these techniques.
 
+## Preview
+![App Preview](src\assets\preview.png)
+
 ## Project files
 
 ```
@@ -64,3 +67,5 @@ To run the project locally in development mode, use the following command:
 ~~~ bash
 npm run dev
 ~~~
+
+#### Working to deploy it as a static page ;)
