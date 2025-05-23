@@ -68,4 +68,8 @@ To run the project locally in development mode, use the following command:
 npm run dev
 ~~~
 
-#### Working to deploy it as a static page ;)
+### Demo Mode Information
+This app currently runs in demo mode as a static frontend. It showcases the layout and UI/UX of the recommendation system.
+* ✅ The data shown is mock data for illustration purposes.
+* 🚫 The search functionality is non-operational and only opens an informational message.
+* 📝 No real-time recommendations or backend API integration are included in this version.
