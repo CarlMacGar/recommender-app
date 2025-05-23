@@ -59,7 +59,11 @@ const DemoPage = () => {
                         <FaSearch className="absolute text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                     </button>
                 </div>
-                
+                <article className="flex flex-col gap-4 mx-auto mt-3 text-sm text-white md:flex-row pb-5">
+                    <p><span className="font-medium text-aqua-light">CBS: </span>Content Based Similarity</p>
+                    <p><span className="font-medium text-aqua-light">CXBS: </span>Context Based Similarity</p>
+                    <p><span className="font-medium text-aqua-light">AIBS: </span>Artificial Intelligence Based Similarity</p>
+                </article>
                 <section className="grid items-center w-full grid-cols-1 px-3 pb-5 mx-auto gap-y-7 gap-x-2 lg:grid-cols-2 2xl:grid-cols-3 justify-items-center">
                     {demoJobs.slice(10, demoJobs.length).map((job, index) => (
                         <div key={index} className="animate-slideUp" style={{ animationDelay: `${index * 0.3}s` }}>
